@@ -1,90 +1,221 @@
 # CodeReview AI
 
-Async AI-powered code review app built with React, Vite, Express, MongoDB, GitHub OAuth, Socket.io, Monaco Editor, and Groq streaming.
+AI-powered asynchronous code review platform built with the MERN stack, Monaco Editor, Groq LLMs, GitHub OAuth, SSE streaming, and Socket.io.
 
-## Local Setup
+### Live Demo
+https://codereview-ai-murex.vercel.app
 
-1. Install dependencies:
+---
 
-```bash
-cd client
-npm install
-cd ../server
-npm install
-```
+## Features
 
-2. Create environment files:
+- AI-powered code analysis using Groq (`llama-3.3-70b-versatile`)
+- GitHub OAuth authentication
+- Monaco Editor integration
+- Real-time threaded discussions with Socket.io
+- Streaming AI responses using Server-Sent Events (SSE)
+- Pull Request review workflows
+- File upload and syntax-aware parsing
+- Security scanning and best-practice analysis
+- PDF export for reports
+- Review analytics dashboard
+- Protected routes with JWT authentication
+- Responsive dark developer UI
+- Inline AI-generated fix suggestions
+- Severity-based issue detection
+- Real-time review progress tracking
+- Multi-step AI processing pipeline
+- Review grading and scoring system
 
-```bash
-copy client\.env.example client\.env
-copy server\.env.example server\.env
-```
+---
 
-3. Fill `server/.env` with MongoDB Atlas, GitHub OAuth, and Groq values.
+## Tech Stack
 
-4. Start the backend:
+### Frontend
+- React 18
+- Vite
+- React Router v6
+- Tailwind CSS
+- Zustand
+- Axios
+- Monaco Editor
+- Framer Motion
+- Socket.io Client
 
-```bash
-cd server
-npm run dev
-```
+### Backend
+- Node.js
+- Express.js
+- MongoDB + Mongoose
+- Passport.js
+- JWT Authentication
+- Groq SDK
+- Socket.io
+- SSE Streaming
+- Helmet
+- Express Rate Limit
 
-5. Start the frontend:
+### Deployment
+- Frontend: Vercel
+- Backend: Render
+- Database: MongoDB Atlas
 
-```bash
-cd client
-npm run dev
-```
+---
 
-Frontend: `http://localhost:5173`
+# Core Modules
 
-Backend health check: `http://localhost:5000/health`
+## Authentication System
+- GitHub OAuth 2.0 login flow
+- JWT access and refresh tokens
+- Secure httpOnly cookie storage
+- Protected route handling
+- Automatic token refresh using Axios interceptors
 
-## Local Preview Auth
+---
 
-For local preview, `ENABLE_DEV_AUTH=true` and `VITE_ENABLE_DEMO_AUTH=true` allow the landing page buttons to create a local demo user through `/auth/dev-login`. This route is disabled automatically when `NODE_ENV=production`.
+## AI Review Engine
+- AI-generated code reviews
+- Security vulnerability scanning
+- Bug detection
+- Performance analysis
+- Readability improvements
+- Best-practice recommendations
+- AI-generated code fixes
+- Severity-based classifications:
+  - Error
+  - Warning
+  - Info
+  - Good
 
-## Production Notes
+---
 
-Use real GitHub OAuth credentials and set:
+## Monaco Review Editor
+- Read-only Monaco Editor review interface
+- Inline severity decorations
+- Color-coded gutters
+- Multi-file support
+- Syntax highlighting
+- Line-based review navigation
 
-```env
-GITHUB_CALLBACK_URL=https://your-backend.onrender.com/auth/github/callback
-FRONTEND_URL=https://your-frontend.vercel.app
-NODE_ENV=production
-```
+---
 
-Then set matching frontend values:
+## Real-Time Features
+- Socket.io powered discussion threads
+- Real-time reply updates
+- Live review progress events
+- SSE streaming AI responses
+- User-specific websocket rooms
 
-```env
-VITE_API_URL=https://your-backend.onrender.com
-VITE_SOCKET_URL=https://your-backend.onrender.com
-VITE_ENABLE_DEMO_AUTH=false
-```
+---
 
-## Deployment
+## Dashboard
+- Review analytics
+- AI score visualization
+- Severity breakdown
+- Review history table
+- Status tracking
+- Language filters
+- Animated stat cards
 
-Backend on Render:
+---
 
-1. Push this repository to GitHub.
-2. In Render, create a new Web Service from the repo.
-3. Set Root Directory to `server`.
-4. Set Build Command to `npm install`.
-5. Set Start Command to `npm start`.
-6. Add all `server/.env` values in Render Environment, but use production URLs.
-7. Set `ENABLE_DEV_AUTH=false` and `NODE_ENV=production`.
+## GitHub Integration
+- Repository access
+- Pull request reviews
+- PR diff visualization
+- GitHub webhook support
+- PR approval workflows
 
-Frontend on Vercel:
+---
 
-1. Import the same GitHub repo in Vercel.
-2. Set Root Directory to `client`.
-3. Framework Preset: Vite.
-4. Build Command: `npm run build`.
-5. Output Directory: `dist`.
-6. Add `VITE_API_URL`, `VITE_SOCKET_URL`, and `VITE_ENABLE_DEMO_AUTH=false`.
+# Screens
 
-After both deploy:
+- Landing Page
+- Dashboard
+- New Review
+- AI Processing
+- Review Editor
+- PR Review
+- Settings Panel
 
-1. Update Render `FRONTEND_URL` to the Vercel URL.
-2. Update GitHub OAuth callback URL to `https://your-render-app.onrender.com/auth/github/callback`.
-3. Update Render `GITHUB_CALLBACK_URL` to the same callback URL.
+---
+
+# System Architecture
+
+## Frontend
+- Component-driven architecture
+- Zustand global state management
+- Protected route system
+- Lazy-loaded Monaco Editor
+- SSE hooks for streaming
+- Axios interceptor queue handling
+
+## Backend
+- REST API architecture
+- Modular controller/service pattern
+- AI service layer
+- WebSocket event architecture
+- SSE streaming engine
+- JWT middleware authentication
+
+---
+
+# Database Design
+
+## Collections
+- Users
+- Reviews
+- Threads
+- Comments
+
+## Database Features
+- Indexed review queries
+- User-scoped access control
+- Embedded AI comments
+- Thread-based collaboration structure
+
+---
+
+# Security
+
+- JWT stored in httpOnly cookies
+- Helmet enabled
+- CORS restricted
+- Rate limiting enabled
+- SSE cleanup handlers
+- Mongo queries scoped per user
+- OAuth-secured authentication flow
+- Secure GitHub webhook validation
+
+---
+
+# Performance Optimizations
+
+- Lazy-loaded Monaco Editor
+- SSE streaming instead of polling
+- Optimized Mongoose indexing
+- Socket room partitioning
+- React Suspense boundaries
+- Paginated review queries
+
+---
+
+# Future Improvements
+
+- Multi-file review support
+- Team collaboration
+- CI/CD integrations
+- AI fine-tuning
+- GitHub App integration
+- Review history analytics
+- Organization workspaces
+- Codebase-wide analysis
+- AI-powered pull request summaries
+
+---
+
+# Author
+
+Nilesh Pratap Dubey
+
+GitHub:
+https://github.com/Nilesh-194
